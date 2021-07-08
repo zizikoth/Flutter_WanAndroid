@@ -1,0 +1,66 @@
+name: wan
+description: 玩安卓Flutter版本
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_localizations:
+    sdk: flutter
+
+  # https://github.com/flutter/cupertino_icons
+  cupertino_icons: ^1.0.3
+
+  # https://github.com/PonnamKarthik/FlutterToast
+  fluttertoast: ^8.0.7
+
+  # https://github.com/flutterchina/dio/blob/master/README-ZH.md
+  dio: ^4.0.0
+
+  # https://github.com/flutterchina/dio/tree/master/plugins/cookie_manager
+  dio_cookie_manager: ^2.0.0
+
+  # https://github.com/peng8350/flutter_pulltorefresh/blob/master/README_CN.md
+  pull_to_refresh: ^2.0.0
+
+  # https://github.com/PonnamKarthik/FlutterToast
+  event_bus: ^2.0.0
+
+  # https://github.com/lianyagang/flutter_swiper_null_safety
+  flutter_swiper_null_safety: ^1.0.2
+
+  # https://pub.dev/packages/path_provider
+  path_provider: ^2.0.2
+
+  # https://github.com/renefloor/flutter_cached_network_image
+  cached_network_image: ^3.0.0
+
+  # https://github.com/OpenFlutter/flutter_screenutil/blob/master/README_CN.md
+  flutter_screenutil: ^5.0.0
+
+  # https://pub.flutter-io.cn/packages/webview_flutter
+  webview_flutter: ^2.0.9
+
+  # https://pub.flutter-io.cn/packages/url_launcher
+  url_launcher: ^6.0.6
+
+  # https://pub.flutter-io.cn/packages/shared_preferences
+  shared_preferences: ^2.0.6
+
+  # https://pub.dev/packages/flutter_slidable
+  flutter_slidable: ^0.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
