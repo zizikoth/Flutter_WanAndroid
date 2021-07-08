@@ -53,24 +53,25 @@ class _MinePage extends CoreState<MinePage> {
       children: [
         Container(
           width: double.infinity,
-          height: 250.w,
           padding: EdgeInsets.all(15.w),
           child: Card(
             elevation: 10.w,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                ClipOval(child: Image.asset(ResAssets.avatar, width: 80.w, height: 80.w)),
+                Padding(padding: EdgeInsets.all(15.w), child: ClipOval(child: Image.asset(ResAssets.avatar, width: 80.w, height: 80.w))),
                 Text(_userName, style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextDark)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
+                      behavior: HitTestBehavior.opaque,
                       onTap: () {
                         UserManager.afterLogin(() => RouteManager.push(CollectionPage()));
                       },
                       child: Container(
                         width: 100.w,
+                        padding: EdgeInsets.only(top: 15.w, bottom: 15.w),
                         child: Column(
                           children: [
                             Text(_collectionNum, style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextDark)),
@@ -80,11 +81,13 @@ class _MinePage extends CoreState<MinePage> {
                       ),
                     ),
                     GestureDetector(
+                      behavior: HitTestBehavior.opaque,
                       onTap: () {
                         UserManager.afterLogin(() => RouteManager.push(CoinPage()));
                       },
                       child: Container(
                         width: 100.w,
+                        padding: EdgeInsets.only(top: 15.w, bottom: 15.w),
                         child: Column(
                           children: [
                             Text(_coinNum, style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextDark)),
@@ -94,11 +97,13 @@ class _MinePage extends CoreState<MinePage> {
                       ),
                     ),
                     GestureDetector(
+                      behavior: HitTestBehavior.opaque,
                       onTap: () {
                         UserManager.afterLogin(() => RouteManager.push(RankPage()));
                       },
                       child: Container(
                         width: 100.w,
+                        padding: EdgeInsets.only(top: 15.w, bottom: 15.w),
                         child: Column(
                           children: [
                             Text(_rankNum, style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextDark)),
