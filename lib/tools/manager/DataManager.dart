@@ -12,7 +12,7 @@ class DataManager {
     "https://pic1.zhimg.com/80/v2-98f9b30c77ba002974c349295eb15509_720w.jpg",
     "https://pic2.zhimg.com/80/v2-c75aca8c1bbd39219d01a427d521de45_720w.jpg",
     "https://pic2.zhimg.com/80/v2-17871d0eb2e7f84bac7636054a7c0dc1_720w.jpg",
-    "https://pic1.zhimg.com/80/v2-25e57f14aba63dbeebd100395407f245_720w.jpg"
+    "https://pic2.zhimg.com/80/v2-7863881260af94eb248eb120f976a11f_720w.jpg"
   ];
 
   static String getAvatar(int? userId) {

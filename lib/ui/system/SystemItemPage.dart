@@ -51,7 +51,7 @@ class _SystemItemPage extends BaseState<SystemItemPage> {
     if (item.isTitle != true) {
       if (item.extra != null) {
         /// 跳转常用网页
-        RouteManager.startWeb(item.title, item.extra.orEmpty);
+        RouteManager.startWeb(item.title, item.extra);
       } else {
         /// 跳转体系文章
         if (item.id.isNotNullOrZero) {
