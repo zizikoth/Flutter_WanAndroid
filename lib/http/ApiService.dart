@@ -36,7 +36,8 @@ class ApiService {
       var data = UserResponse.fromJson(value).data;
       if (data != null) {
         /// 存储用户信息
-        UserManager.setUserName(data.username.orEmpty);
+        UserManager.setUserName(data.nickname.orEmpty);
+        UserManager.setUserCollections(data.collectIds.orEmpty.map((e) => e.toString()).toList());
 
         /// 发送登录通知
         EventManager.fireLogin();
@@ -300,6 +301,12 @@ class ApiService {
     Map<String, dynamic> params = Map();
     params['originId'] = originId;
     return Http.post(Api.unCollectArticleInList(id), null, false, params: params).then((value) => value != null);
+  }
+
+  /// 在文章详情也取消收藏
+  /// id  文章id
+  Future<bool> unCollectArticleInDetail(int id) {
+    return Http.post(Api.unCollectArticleInDetail(id), null, false).then((value) => value != null);
   }
 
   /// 获取积分列表

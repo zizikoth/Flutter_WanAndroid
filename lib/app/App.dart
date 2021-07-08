@@ -23,6 +23,7 @@ class _App extends State<App> {
   void initState() {
     super.initState();
     Http.init();
+    DataManager.init();
   }
 
   @override

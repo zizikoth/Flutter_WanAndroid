@@ -41,22 +41,25 @@ class UserResponse {
 /// username : "Mr.Memo"
 
 class UserInfo {
-  String? username;
+  String? nickname;
+  List<dynamic>? collectIds;
 
-  UserInfo({this.username});
+  UserInfo({this.nickname, this.collectIds});
 
   UserInfo.fromJson(dynamic json) {
-    username = json["username"];
+    nickname = json["username"];
+    collectIds = json['collectIds'];
   }
 
   Map<String, dynamic> toJson() {
     var map = <String, dynamic>{};
-    map["username"] = username;
+    map["username"] = nickname;
+    map['collectIds'] = collectIds;
     return map;
   }
 
   @override
   String toString() {
-    return 'UserInfo{username: $username}';
+    return 'UserInfo{username: $nickname,collectIds:$collectIds}';
   }
 }

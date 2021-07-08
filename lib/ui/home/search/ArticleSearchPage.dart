@@ -173,14 +173,13 @@ class _ArticleSearchPage extends BaseState<ArticleSearchPage> {
       changeState(States.Content);
 
       /// 历史记录
-      DataManager.getKeyWord().then((value) {
-        setState(() {
-          _histories.clear();
-          if (value.isNotNullOrEmpty) {
-            _histories.add(WrapItemEntity("历史记录", 0, true));
-            _histories.addAll(value.map((e) => WrapItemEntity(e, 0, false)).toList());
-          }
-        });
+      var words = DataManager.getKeyWord();
+      setState(() {
+        _histories.clear();
+        if (words.isNotNullOrEmpty) {
+          _histories.add(WrapItemEntity("历史记录", 0, true));
+          _histories.addAll(words.map((e) => WrapItemEntity(e, 0, false)).toList());
+        }
       });
 
       /// 搜索热词

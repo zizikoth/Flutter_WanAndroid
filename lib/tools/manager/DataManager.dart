@@ -2,6 +2,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wan/tools/Tools.dart';
 
 class DataManager {
+  static SharedPreferences? _sp;
+
   static const _avatars = [
     "https://pic1.zhimg.com/80/v2-53d98d025e653bcdd18516c66b4e7ded_720w.jpg",
     "https://pic2.zhimg.com/80/v2-d7bee94aabb2f2999f1d60523b724e63_720w.jpg",
@@ -15,6 +17,10 @@ class DataManager {
     "https://pic2.zhimg.com/80/v2-7863881260af94eb248eb120f976a11f_720w.jpg"
   ];
 
+  static init() async {
+    _sp = await SharedPreferences.getInstance();
+  }
+
   static String getAvatar(int? userId) {
     var id = 0;
     if (userId != null && userId > 0) {
@@ -23,24 +29,39 @@ class DataManager {
     return _avatars[id % 10];
   }
 
-  static Future<bool> saveUserName(String name) async {
-    var sp = await SharedPreferences.getInstance();
-    return sp.setString("UserName", name);
+  /// 存储用户名
+  static Future<bool> saveUserName(String name) {
+    return _sp!.setString("UserName", name);
   }
 
-  static Future<String> getUserName() async {
-    var sp = await SharedPreferences.getInstance();
-    return sp.getString("UserName").orEmpty;
+  /// 获取用户名
+  static String getUserName() {
+    return _sp!.getString("UserName").orEmpty;
   }
 
+  /// 移除用户名
   static removeUserName() async {
-    var sp = await SharedPreferences.getInstance();
-    sp.remove("UserInfo");
+    _sp!.remove("UserInfo");
   }
 
-  static Future<bool> saveKeyWord(String keyWord) async {
-    var sp = await SharedPreferences.getInstance();
-    var histories = sp.getStringList("keywords").orEmpty;
+  /// 获取用户收藏
+  static List<String> getUserCollections() {
+    return _sp!.getStringList("UserCollection").orEmpty;
+  }
+
+  /// 保存用户收藏
+  static Future<bool> saveUserCollections(List<String> collections) {
+    return _sp!.setStringList("UserCollection", collections);
+  }
+
+  /// 移除用户收藏
+  static removeUserCollections() {
+    _sp!.remove("UserInfo");
+  }
+
+  /// 保存关键字
+  static Future<bool> saveKeyWord(String keyWord) {
+    var histories = _sp!.getStringList("keywords").orEmpty;
     if (histories.length > 20) {
       histories.removeLast();
     }
@@ -52,11 +73,11 @@ class DataManager {
         ..removeAt(index)
         ..insert(0, keyWord);
     }
-    return sp.setStringList("keywords", histories);
+    return _sp!.setStringList("keywords", histories);
   }
 
-  static Future<List<String>> getKeyWord() async {
-    var sp = await SharedPreferences.getInstance();
-    return sp.getStringList("keywords").orEmpty;
+  /// 获取关键字
+  static List<String> getKeyWord() {
+    return _sp!.getStringList("keywords").orEmpty;
   }
 }

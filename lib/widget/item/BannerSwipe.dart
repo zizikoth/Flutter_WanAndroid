@@ -30,7 +30,8 @@ class _BannerSwipe extends State<BannerSwipe> {
               onTap: () {
                 var title = widget.data[index].title.orEmpty;
                 var url = widget.data[index].url.orEmpty;
-                RouteManager.startWeb(title, url);
+                var id = widget.data[index].id.orEmpty;
+                RouteManager.startArticleWeb(title, url, id);
               },
               child: CacheImage(widget.data[index].imagePath.orEmpty),
             );

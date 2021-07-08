@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:wan/app/Constant.dart';
 import 'package:wan/core/base/BaseState.dart';
@@ -35,9 +34,6 @@ class _SquareUserPage extends BaseState<SquareUserPage> {
 
   /// 刷新控制
   RefreshController _refreshController = RefreshController();
-
-  /// 滑动控制
-  SlidableController _slidableController = SlidableController();
 
   /// 滚动控制
   ScrollController _scrollController = ScrollController();

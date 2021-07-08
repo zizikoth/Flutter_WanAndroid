@@ -50,7 +50,9 @@ class _TodoBottomSheet extends State<TodoBottomSheet> {
               style: TextStyle(color: Colors.black, fontSize: ResDimen.textLarge, fontWeight: FontWeight.bold),
             ),
           ),
-          Column(
+          Expanded(
+              child: SingleChildScrollView(
+                  child: Column(
             children: [
               LabelBar("完成状态", ResColors.TextDark),
               Wrap(
@@ -149,7 +151,7 @@ class _TodoBottomSheet extends State<TodoBottomSheet> {
                           )))
                       .toList()),
             ],
-          ),
+          ))),
           Container(
             padding: EdgeInsets.only(top: 20.w, bottom: 20.w),
             child: MaterialButton(

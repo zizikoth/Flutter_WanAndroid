@@ -41,7 +41,8 @@ class _ArticleItem extends State<ArticleItem> {
             enabled: widget.enableSlide,
             child: GestureDetector(
               onTap: () {
-                RouteManager.startWeb(article.formatTitle(), article.link.orEmpty);
+                RouteManager.startArticleWeb(
+                    article.formatTitle(), article.link.orEmpty, article.originId != null ? article.originId.orEmpty : article.id.orEmpty);
               },
               child: Column(
                 children: [

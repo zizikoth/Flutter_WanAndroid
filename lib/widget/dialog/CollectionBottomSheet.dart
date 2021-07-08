@@ -33,7 +33,9 @@ class _CollectionBottomSheet extends State<CollectionBottomSheet> {
                 style: TextStyle(color: Colors.black, fontSize: ResDimen.textLarge, fontWeight: FontWeight.bold),
               ),
             ),
-            Column(
+            Expanded(
+                child: SingleChildScrollView(
+                    child: Column(
               children: [
                 TextField(
                     maxLines: 1,
@@ -70,8 +72,8 @@ class _CollectionBottomSheet extends State<CollectionBottomSheet> {
                     }),
                 Container(height: 20.w),
                 TextField(
-                    minLines: 4,
-                    maxLines: 4,
+                    minLines: 3,
+                    maxLines: 3,
                     maxLength: 100,
                     cursorColor: ResColors.TextDark,
                     scrollPhysics: BouncingScrollPhysics(),
@@ -88,7 +90,7 @@ class _CollectionBottomSheet extends State<CollectionBottomSheet> {
                       _link = value;
                     }),
               ],
-            ),
+            ))),
             Container(
               padding: EdgeInsets.only(top: 20.w, bottom: 20.w),
               child: MaterialButton(

@@ -151,11 +151,7 @@ class _MinePage extends CoreState<MinePage> {
 
   _initUser() {
     // 用户名称
-    UserManager.getUserName().then((value) {
-      setState(() {
-        _userName = value;
-      });
-    });
+    setState(() => _userName = UserManager.getUserName());
   }
 
   _initCollection() {

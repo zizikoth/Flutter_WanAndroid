@@ -6,6 +6,7 @@ import 'package:wan/core/base/BaseState.dart';
 import 'package:wan/entity/remote/ArticlesResponse.dart';
 import 'package:wan/http/ApiService.dart';
 import 'package:wan/tools/Tools.dart';
+import 'package:wan/tools/manager/UserManager.dart';
 import 'package:wan/widget/custom/Refresh.dart';
 import 'package:wan/widget/custom/TitleBar.dart';
 import 'package:wan/widget/dialog/CollectionBottomSheet.dart';
@@ -101,24 +102,33 @@ class _CollectionPage extends BaseState<CollectionPage> {
   _unCollection(int id, int originId) {
     showLoad();
     _api.unCollectArticleInList(id, originId).then((value) {
-      var index = _articles.indexWhere((article) => article.id == id);
-      if (index != -1) {
-        /// 如果只有一个数据的时候那么重新请求一下数据
-        if (_articles.length == 1) {
-          _refreshController.requestRefresh();
+      if (value) {
+        /// 移除收藏
+        UserManager.removeUserCollections(originId.toString());
+        var index = _articles.indexWhere((article) => article.id == id);
+        if (index != -1) {
+          /// 如果只有一个数据的时候那么重新请求一下数据
+          if (_articles.length == 1) {
+            _refreshController.requestRefresh();
+          }
+          setState(() {
+            _articles.removeAt(index);
+          });
         }
-        setState(() {
-          _articles.removeAt(index);
-        });
-      }
 
-      /// 通知收藏数据更新
-      EventManager.fireCollect();
+        /// 通知收藏数据更新
+        EventManager.fireCollect();
+      }
     }).whenComplete(() => hideLoad());
   }
 
   @override
-  void initialize() {}
+  void initialize() {
+    EventManager.onCollection(this, () {
+      _page = 0;
+      start();
+    });
+  }
 
   @override
   void start() {

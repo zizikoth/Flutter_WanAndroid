@@ -52,4 +52,20 @@ class RouteManager {
       Logger.logTag("网页异常", "无法打开网页");
     }
   }
+
+  static startArticleWeb(String title, String url, int id) async {
+    try {
+      if (Platform.isAndroid || Platform.isIOS) {
+        if (Utils.getContext() != null) {
+          return Utils.safeWork(() {
+            Navigator.push(Utils.getContext()!, CupertinoPageRoute<void>(builder: (context) => WebPage(title, url, id: id)));
+          });
+        }
+      } else if (await canLaunch(url)) {
+        await launch(url);
+      }
+    } catch (e) {
+      Logger.logTag("网页异常", "无法打开网页");
+    }
+  }
 }
