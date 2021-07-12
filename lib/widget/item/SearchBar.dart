@@ -34,6 +34,7 @@ class _SearchBar extends State<SearchBar> {
         cursorColor: ResColors.Black,
         style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextDark, textBaseline: TextBaseline.alphabetic),
         textInputAction: TextInputAction.search,
+        keyboardType: TextInputType.text,
         decoration: InputDecoration(
             hintText: "搜点什么吧",
             contentPadding: EdgeInsets.all(0),

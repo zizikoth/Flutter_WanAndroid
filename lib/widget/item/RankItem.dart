@@ -33,10 +33,9 @@ class _RankItem extends State<RankItem> {
                 info.username.orEmpty,
                 style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextNormal),
               )),
-              Text(
-                "${info.coinCount}",
-                style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextNormal),
-              )
+              Padding(
+                  padding: EdgeInsets.only(right: 15.w),
+                  child: Text("${info.coinCount}", style: TextStyle(fontSize: ResDimen.textNormal, color: ResColors.TextNormal)))
             ],
           ),
         ),

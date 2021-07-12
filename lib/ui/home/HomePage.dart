@@ -94,12 +94,11 @@ class _HomePage extends BaseState<HomePage> {
             height: ResDimen.toolBarHeight,
             margin: EdgeInsets.only(top: ResDimen.statusBarHeight),
             alignment: Alignment.center,
-            child: GestureDetector(
-              onTap: () {
-                RouteManager.push(ArticleSearchPage());
-              },
-              child: Image.asset(ResAssets.ic_search, width: ResDimen.w20, height: ResDimen.w20),
-            ))
+            child: IconButton(
+                icon: Image.asset(ResAssets.ic_search, width: ResDimen.w20, height: ResDimen.w20),
+                onPressed: () {
+                  RouteManager.push(ArticleSearchPage());
+                }))
       ],
     );
   }
