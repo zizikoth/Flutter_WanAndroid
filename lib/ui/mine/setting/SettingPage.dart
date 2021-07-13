@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:wan/core/base/CoreState.dart';
 import 'package:wan/http/ApiService.dart';
 import 'package:wan/tools/Tools.dart';
@@ -25,9 +26,16 @@ class _SettingPage extends CoreState<SettingPage> {
       width: double.infinity,
       padding: EdgeInsets.all(15.w),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Card(elevation: 10.w, child: ItemBar("清理缓存", onClick: _clearCache, extra: _cacheSize)),
+          Padding(
+              padding: EdgeInsets.only(top: 15.w, bottom: 15.w),
+              child: Card(
+                  elevation: 10.2,
+                  child: Column(mainAxisSize: MainAxisSize.min, children: [
+                    ItemBar("调用安卓方法", onClick: _callAndroid),
+                  ]))),
+          Spacer(),
           Container(
             padding: EdgeInsets.only(bottom: 40.w),
             child: MaterialButton(
@@ -62,6 +70,13 @@ class _SettingPage extends CoreState<SettingPage> {
       setState(() {
         _cacheSize = "";
       });
+    });
+  }
+
+  _callAndroid() {
+    const methodChannel = MethodChannel("com.memo.wan/flutter");
+    methodChannel.invokeMethod("request").then((value) {
+      TipUtils.toast(value);
     });
   }
 

@@ -40,7 +40,7 @@ class _ProjectPage extends BaseState<ProjectPage> with TickerProviderStateMixin 
               data: ThemeData(splashColor: Colors.transparent, highlightColor: Colors.transparent),
               child: TabBar(
                   physics: BouncingScrollPhysics(),
-                  tabs: _projects.map((e) => Tab(text: e.name.orEmpty)).toList(),
+                  tabs: _projects.map((e) => Tab(text: CommUtils.fromHtml(e.name))).toList(),
                   controller: _tabController,
                   isScrollable: _projects.length > 4,
                   indicatorColor: ResColors.Black,
