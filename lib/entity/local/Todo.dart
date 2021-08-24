@@ -44,13 +44,13 @@ class TodoPriority {
 }
 
 class TodoOrderBy {
-  /// 完成时间顺序
+  /// 完成时间升序
   static const COMPLETE_DATE_UP = 1;
 
   /// 完成时间倒叙
   static const COMPLETE_DATE_DOWN = 2;
 
-  /// 创建时间顺序
+  /// 创建时间升序
   static const CREATE_DATE_UP = 3;
 
   /// 创建时间倒叙
